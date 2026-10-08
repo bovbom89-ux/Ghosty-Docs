@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111116">
+<title>Ghosty | Documentation</title>
+<style>
+:root{--bg:#111116;--panel:#191920;--border:#2c2c38;--text:#eeeef5;--muted:#aaaabd;--accent:#a78bfa;--soft:#a78bfa20}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 system-ui,sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{height:68px;position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:20px;padding:0 24px;background:#111116f5;border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:10px;min-width:215px;color:var(--text);font-size:18px;font-weight:750}
+.brand:hover{text-decoration:none}
+.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#b69cff,#7652d8);font-size:22px}
+.brand small{display:block;font-size:10px;letter-spacing:1px;color:var(--muted)}
+.search{flex:1;max-width:450px}
+.search input{width:100%;padding:10px 13px;background:var(--panel);border:1px solid var(--border);border-radius:8px;color:white;outline:none}
+.search input:focus{border-color:var(--accent)}
+.toplinks{margin-left:auto;display:flex;gap:20px;font-size:13px}
+.toplinks a{color:var(--muted)}
+.layout{display:grid;grid-template-columns:225px minmax(0,760px);justify-content:center;gap:40px;padding:32px 25px 80px}
+.sidebar{position:sticky;top:88px;height:calc(100vh - 105px);overflow-y:auto;padding-right:8px}
+.group{margin:17px 0 7px 10px;color:#858599;font-size:10px;font-weight:750;letter-spacing:1.2px;text-transform:uppercase}
+.nav{display:block;padding:7px 10px;margin:2px 0;border-radius:7px;color:#b9b9ca;font-size:13px}
+.nav:hover,.nav.active{background:var(--soft);color:#d2c3ff;text-decoration:none}
+main{min-width:0}
+.crumb{font-size:12px;color:var(--muted);margin-bottom:17px}
+h1{font-size:clamp(30px,4vw,42px);line-height:1.2;letter-spacing:-1px;margin:0 0 15px}
+h2{font-size:23px;margin:35px 0 10px}
+h3{font-size:16px;margin:0 0 5px}
+p,li{color:#bdbdce}
+.lead{font-size:17px;line-height:1.8}
+.tag{display:inline-block;padding:4px 9px;border-radius:5px;background:var(--soft);color:#d0c0ff;font-size:10px;font-weight:750;letter-spacing:1px;margin-bottom:14px}
+.callout{padding:15px 17px;margin:22px 0;border:1px solid #514272;border-left:3px solid var(--accent);border-radius:8px;background:#a78bfa0b}
+.callout strong{display:block;color:#d4c6ff}
+.callout p{margin:4px 0 0;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:22px 0}
+.card{display:block;padding:18px;border:1px solid var(--border);border-radius:10px;background:linear-gradient(140deg,#1c1c25,#15151b);color:var(--text);transition:.15s}
+.card:hover{border-color:#7760b3;transform:translateY(-2px);text-decoration:none}
+.cardicon{width:36px;height:36px;display:grid;place-items:center;border-radius:9px;background:var(--soft);color:#d0c0ff;font-size:19px;margin-bottom:12px}
+.card p{font-size:12px;line-height:1.7;margin:0}
+li{margin:6px 0}
+code{background:#262331;color:#d2c3ff;padding:3px 6px;border-radius:5px;font-size:12px}
+footer{border-top:1px solid var(--border);margin-top:48px;padding-top:20px;color:var(--muted);font-size:12px}
+.menu{display:none;background:var(--panel);color:white;border:1px solid var(--border);padding:7px 10px;border-radius:7px}
+@media(max-width:800px){
+header{height:62px;padding:0 12px;gap:10px}
+.brand{min-width:0;font-size:16px}
+.brand small,.toplinks{display:none}
+.logo{width:33px;height:33px}
+.menu{display:block}
+.layout{display:block;padding:25px 18px 60px}
+.sidebar{display:none;position:fixed;top:62px;left:0;z-index:15;width:280px;height:calc(100vh - 62px);padding:18px;background:var(--bg);border-right:1px solid var(--border)}
+.sidebar.open{display:block}
+.cards{grid-template-columns:1fr}
+h1{font-size:32px}
+}
+</style>
+</head>
+<body>
+<header>
+<button class="menu" id="menu" aria-label="Open menu">☰</button>
+<a class="brand" href="#home"><span class="logo">👻</span><span>Ghosty<small>DOCUMENTATION</small></span></a>
+<div class="search"><input id="search" type="search" placeholder="Search documentation..." aria-label="Search documentation"></div>
+<nav class="toplinks"><a href="#commands">Commands</a><a href="#support">Support</a></nav>
+</header>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<div class="group">Overview</div>
+<a class="nav" href="#home">Introduction</a>
+<a class="nav" href="#getting-started">Getting Started</a>
+<a class="nav" href="#installation">Installation</a>
+<div class="group">Configuration</div>
+<a class="nav" href="#setup">Setup</a>
+<a class="nav" href="#settings">Settings</a>
+<div class="group">Protection</div>
+<a class="nav" href="#anti-raid">Anti-Raid</a>
+<a class="nav" href="#captcha">CAPTCHA</a>
+<a class="nav" href="#verification">Verification</a>
+<a class="nav" href="#anti-spam">Anti-Spam</a>
+<a class="nav" href="#honeypot">Honeypot</a>
+<a class="nav" href="#account-age">Minimum Account Age</a>
+<a class="nav" href="#reports">Reports</a>
+<a class="nav" href="#dm-protection">DM Protection</a>
+<div class="group">Reference</div>
+<a class="nav" href="#commands">Commands</a>
+<a class="nav" href="#permissions">Permissions</a>
+<a class="nav" href="#troubleshooting">Troubleshooting</a>
+<a class="nav" href="#support">Support</a>
+</aside>
+
+<main id="content"></main>
+</div>
+
+<script>
+const pages={
+home:{
+category:"OVERVIEW",title:"Ghosty Documentation",
+intro:"Everything you need to configure Ghosty, manage your Discord server and learn about its protection features.",
+body:`<div class="tag">DISCORD SECURITY BOT</div>
+<div class="callout"><strong>Welcome to Ghosty</strong><p>Explore the guides below to learn about setup, configuration and server protection.</p></div>
+<h2 id="explore">Explore the documentation</h2>
+<div class="cards">
+<a class="card" href="#getting-started"><div class="cardicon">➜</div><h3>Getting Started</h3><p>Learn the basics of using Ghosty.</p></a>
+<a class="card" href="#setup"><div class="cardicon">⚙</div><h3>Setup and Settings</h3><p>Configure your server options.</p></a>
+<a class="card" href="#anti-raid"><div class="cardicon">⬡</div><h3>Protection Modules</h3><p>Explore security features and guides.</p></a>
+<a class="card" href="#commands"><div class="cardicon">⌘</div><h3>Commands</h3><p>Find command descriptions and examples.</p></a></div>
+<h2 id="first-steps">First steps</h2><ol><li>Invite Ghosty using your official invite link.</li><li>Check the bot's role hierarchy and permissions.</li><li>Run <code>/setup</code> if available.</li><li>Use <code>/settings</code> to configure supported options.</li></ol>
+<div class="callout"><strong>Important</strong><p>Confirm that each documented feature is implemented in your current version of Ghosty.</p></div>`
+},
+"getting-started":{category:"OVERVIEW",title:"Getting Started",intro:"Prepare your Discord server before configuring Ghosty.",body:`<h2 id="requirements">Before you begin</h2><ul><li>You need permission to add apps to your server.</li><li>Ghosty needs the permissions required by the features you enable.</li><li>Some features require specific roles or channels.</li></ul><h2 id="invite">Invite Ghosty</h2><p>Use your official Ghosty invite link and review the requested permissions before authorising it.</p><h2 id="configure">Configure your server</h2><p>Run <code>/setup</code> if supported. Follow the bot's prompts, save your settings and test enabled modules.</p><div class="callout"><strong>Role hierarchy</strong><p>Place Ghosty's role above the roles it needs to manage.</p></div>`},
+installation:{category:"OVERVIEW",title:"Installation",intro:"Add Ghosty to your server and check that it is working.",body:`<h2 id="invite">Step 1: Invite the bot</h2><p>Open your official Ghosty invite link, select your server and review the permissions.</p><p><strong>Invite link:</strong> Replace this text with your actual Discord OAuth2 invite URL.</p><h2 id="permissions">Step 2: Check permissions</h2><p>Grant only the permissions required by your chosen features.</p><h2 id="test">Step 3: Test Ghosty</h2><ul><li>Check that Ghosty appears online.</li><li>Check that slash commands are registered.</li><li>Try <code>/help</code> or <code>/setup</code> if available.</li></ul>`},
+setup:{category:"CONFIGURATION",title:"Setup",intro:"Configure Ghosty for your Discord server.",body:`<h2 id="open">Open setup</h2><p>Run <code>/setup</code> if available in your installed version.</p><h2 id="modules">Choose modules</h2><p>Enable features your bot supports, such as anti-raid, CAPTCHA, verification, anti-spam, honeypot and reports.</p><h2 id="test">Save and test</h2><p>Verify changes were saved, required channels and roles exist, and Ghosty has the permissions it needs.</p>`},
+settings:{category:"CONFIGURATION",title:"Settings",intro:"View and manage Ghosty's configuration.",body:`<h2 id="open">Open settings</h2><p>Run <code>/settings</code> if the command is registered in your version.</p><h2 id="options">Configuration options</h2><p>Use the settings menu to review available modules and change their settings.</p><h2 id="save">Save changes</h2><p>Check the bot's confirmation and test each change.</p>`},
+"anti-raid":{category:"PROTECTION",title:"Anti-Raid",intro:"Learn how raid detection can help protect your server from unusual join activity.",body:`<h2 id="overview">Overview</h2><p>An anti-raid system monitors member joins and can respond when activity crosses a configured threshold.</p><h2 id="configure">Configuration</h2><ol><li>Enable the module if supported.</li><li>Configure the join threshold and detection window.</li><li>Choose the intended response to a detected raid.</li><li>Test the settings carefully.</li></ol><div class="callout"><strong>Use sensible thresholds</strong><p>A low threshold may trigger during legitimate events.</p></div>`},
+captcha:{category:"PROTECTION",title:"CAPTCHA",intro:"Learn about challenge-based checks for new members.",body:`<h2 id="overview">Overview</h2><p>A CAPTCHA asks members to complete a challenge before accessing protected areas.</p><h2 id="configure">Configuration</h2><ul><li>Configure the verification channel.</li><li>Check the bot's permissions.</li><li>Test correct, incorrect and expired challenges.</li></ul><p>Document CAPTCHA and verification separately only if Ghosty implements them as distinct features.</p>`},
+verification:{category:"PROTECTION",title:"Verification",intro:"Configure the member verification flow.",body:`<h2 id="overview">How it works</h2><p>A verification system can require new members to complete a challenge before receiving a verified role.</p><h2 id="configure">Setup</h2><ol><li>Configure the verification panel.</li><li>Check the required role exists.</li><li>Ensure Ghosty can assign the role.</li><li>Test the full flow with a test account.</li></ol>`},
+"anti-spam":{category:"PROTECTION",title:"Anti-Spam",intro:"Learn how repetitive or excessive messaging can be detected.",body:`<h2 id="overview">Overview</h2><p>Anti-spam protection can detect rapid repeated messages and apply configured actions.</p><h2 id="configure">Configuration</h2><ul><li>Choose supported spam thresholds.</li><li>Set the intended response.</li><li>Test normal conversations to reduce false positives.</li></ul>`},
+honeypot:{category:"PROTECTION",title:"Honeypot",intro:"Understand how a restricted channel can help detect suspicious behaviour.",body:`<h2 id="overview">Overview</h2><p>A honeypot channel is a restricted channel that ordinary members should not need to use. Messages there can trigger a configured response.</p><h2 id="configure">Configuration</h2><p>Check channel permissions and test the configured moderation response before enabling it for everyone.</p><div class="callout"><strong>Test carefully</strong><p>Ensure moderators understand the channel's purpose and avoid accidental actions.</p></div>`},
+"account-age":{category:"PROTECTION",title:"Minimum Account Age",intro:"Use account-age checks to identify newly created accounts.",body:`<h2 id="overview">Overview</h2><p>An account-age check compares a member's account creation time with a configured minimum age.</p><h2 id="configure">Configuration</h2><p>Choose a threshold appropriate for your community and test the response.</p><p>Account age alone does not prove an account is malicious. Strict settings can affect legitimate new members.</p>`},
+reports:{category:"PROTECTION",title:"Reports",intro:"Learn how members can report issues to your moderation team.",body:`<h2 id="overview">Overview</h2><p>A reporting feature lets members alert staff to an issue that needs review.</p><h2 id="configure">Configuration</h2><p>Check whether Ghosty supports a report command or panel and configure a review channel if required.</p><p>Handle reports privately and fairly.</p>`},
+"dm-protection":{category:"PROTECTION",title:"DM Protection",intro:"Understand the limits and available options for direct-message protection.",body:`<h2 id="important">Important limitation</h2><p>A Discord bot cannot globally prevent server members from sending direct messages to each other. Those controls belong to Discord and individual users.</p><h2 id="features">Available options</h2><p>Document only the DM-related safeguards Ghosty actually implements.</p>`},
+commands:{category:"REFERENCE",title:"Commands",intro:"A reference for Ghosty's slash commands.",body:`<div class="callout"><strong>Check your bot version</strong><p>Confirm which commands are registered before publishing this list as definitive.</p></div><h2 id="configuration">Configuration</h2><ul><li><code>/setup</code> — Open the setup interface, if implemented.</li><li><code>/settings</code> — Manage server settings, if implemented.</li><li><code>/help</code> — View help, if implemented.</li></ul><h2 id="moderation">Moderation</h2><ul><li><code>/ban</code> — Ban a member.</li><li><code>/unban</code> — Remove a ban.</li><li><code>/kick</code> — Remove a member.</li><li><code>/timeout</code> — Apply a timeout.</li><li><code>/untimeout</code> — Remove a timeout.</li><li><code>/warn</code> — Issue a warning.</li><li><code>/warnings</code> — View warnings.</li><li><code>/clearwarnings</code> — Clear warning records.</li><li><code>/purge</code> — Bulk-delete eligible messages.</li></ul><h2 id="server">Server and utility</h2><ul><li><code>/slowmode</code> — Configure slow mode.</li><li><code>/lock</code> and <code>/unlock</code> — Lock or unlock a channel.</li><li><code>/lockdown</code> and <code>/unlockdown</code> — Manage server lockdown, if implemented.</li><li><code>/userinfo</code> — View member information.</li><li><code>/serverinfo</code> — View server information.</li><li><code>/roleinfo</code> — View role information.</li><li><code>/channelinfo</code> — View channel information.</li><li><code>/avatar</code> — View an avatar.</li><li><code>/ping</code> — Check latency.</li><li><code>/uptime</code> — View running time.</li><li><code>/botinfo</code> — View bot information.</li><li><code>/support</code> — Find support information.</li></ul>`},
+permissions:{category:"REFERENCE",title:"Permissions",intro:"Give Ghosty the permissions required for its enabled features.",body:`<h2 id="least-privilege">Least privilege</h2><p>Grant only the permissions needed by the features you use. Avoid Administrator unless it is genuinely necessary.</p><h2 id="roles">Role hierarchy</h2><p>Ghosty's highest role must be above the roles it needs to assign or moderate.</p><h2 id="channels">Channel access</h2><p>Check that Ghosty can view and manage the relevant channels where required.</p>`},
+troubleshooting:{category:"REFERENCE",title:"Troubleshooting",intro:"Solutions to common installation and configuration issues.",body:`<h2 id="missing">Commands are missing</h2><p>Check command registration, application permissions and that the bot is in your server.</p><h2 id="permissions">Permission errors</h2><p>Check the bot's role hierarchy and channel-specific permissions.</p><h2 id="interactions">The application did not respond</h2><p>Check runtime logs, interaction handlers and required environment variables.</p><h2 id="modules">A feature is not working</h2><p>Confirm that the feature is enabled, settings are saved and the bot has the required permissions.</p>`},
+support:{category:"REFERENCE",title:"Support",intro:"Find help with Ghosty's installation, commands and protection features.",body:`<h2 id="before">Before requesting help</h2><ul><li>Read the relevant documentation page.</li><li>Copy the exact error message.</li><li>Check the bot's logs for errors.</li></ul><h2 id="contact">Contact</h2><p>Add your official Ghosty support server invitation here.</p>`}
+};
+
+const content=document.getElementById("content");
+const sidebar=document.getElementById("sidebar");
+const search=document.getElementById("search");
+const navLinks=[...document.querySelectorAll(".nav")];
+
+function render(){
+ const key=location.hash.slice(1)||"home";
+ const page=pages[key]||pages.home;
+ content.innerHTML=`<div class="crumb">${page.category} / ${page.title}</div>
+ <h1>${page.title}</h1><p class="lead">${page.intro}</p>
+ ${page.body}<footer>Ghosty Documentation · Unofficial starter template for your Ghosty project.</footer>`;
+ navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+key));
+ sidebar.classList.remove("open");
+ document.querySelectorAll("h2").forEach(h=>{
+   h.style.scrollMarginTop="90px";
+ });
+}
+window.addEventListener("hashchange",render);
+render();
+
+document.getElementById("menu").addEventListener("click",()=>{
+ sidebar.classList.toggle("open");
+});
+
+search.addEventListener("input",()=>{
+ const q=search.value.trim().toLowerCase();
+ let results=document.getElementById("results");
+ if(!q){results.style.display="none";return;}
+ const matches=Object.entries(pages).filter(([key,p])=>
+  (p.title+" "+p.intro+" "+p.category+" "+p.body.replace(/<[^>]*>/g," "))
+  .toLowerCase().includes(q)).slice(0,8);
+ results.style.display="block";
+ results.innerHTML=matches.length?matches.map(([key,p])=>
+  `<a href="#${key}">${p.title}<small>${p.category}</small></a>`
+ ).join(""):"<p>No matching pages found.</p>";
+});
+document.addEventListener("click",e=>{
+ if(!e.target.closest(".search"))document.getElementById("results").style.display="none";
+});
+</script>
+</body>
+</html>
