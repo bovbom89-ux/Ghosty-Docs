@@ -1,0 +1,6 @@
+
+{
+  "scripts": {
+    "build": "echo Ghosty Docs is ready"
+  }
+}
